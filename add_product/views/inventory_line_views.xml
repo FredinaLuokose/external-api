@@ -1,0 +1,12 @@
+<odoo>
+    <record id="view_inventory_line_inherit_product_brand_id" model="ir.ui.view">
+        <field name="name">Inventory.product.brand</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='product_id']" position="after">
+                <field name="product_brand_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

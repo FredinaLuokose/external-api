@@ -1,0 +1,56 @@
+<odoo>
+  <record id="product_brand_tree_view_id" model="ir.ui.view">
+    <field name="name">product.brand.tree.view.id</field>
+    <field name="model">product.brand</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="product_brand_name"/>
+        <field name="product_brand_ceo_name"/>
+        <field name="product_brand_logo"/>
+      </tree>
+    </field>
+  </record>
+  <record id="product_brand_form_view_id" model="ir.ui.view">
+    <field name="name">product.brand.form.view.id</field>
+    <field name="model">product.brand</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <field name="product_brand_logo" widget="image" class="oe_avatar" options="{'preview_image': 'product_brand_logo', 'size': [120, 120]}"/>
+          <div class="oe_title">
+            <h1>
+              <field name="product_brand_name" placeholder="Product Brand's Name"/>
+            </h1>
+          </div>
+          <group id="brand_general_info">
+            <field name="product_brand_ceo_name" class="oe_inline" widget="input"/>
+            <field name="product_brand_ranking" class="oe_inline" widget="input"/>
+            <field name="product_brand_active" class="oe_inline" widget="boolean_toggle"/>
+          </group>
+          <notebook>
+            <page string="Basic Information">
+              <group>
+                <group>
+                  <field name="product_brand_origin_country" class="oe_inline" widget="input"/>
+                  <field name="product_brand_founding_year" widget="date"/>
+                </group>
+                <group>
+                  <field name="product_brand_description" widget="text" placeholder="Describe about the brand.."/>
+                </group>
+              </group>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  <record id="action_product_brand_id" model="ir.actions.act_window">
+    <field name="name">action.product.brand.id</field>
+    <field name="res_model">product.brand</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <menuitem id="menu_product_brand_template"
+            name="Product Brands"
+            action="action_product_brand_id"
+            parent="sale.product_menu_catalog"/>
+</odoo>
